@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>People List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .people-list {
+        margin: 20px 0;
+      }
+      .people-list ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      .people-list ul li {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>People List</h1>
+
+    <div class="people-list">
+      <ul id="people">
+        {% for person in people %}
+        <li>
+          {{ person }}
+          <button onclick="deletePerson('{{ person }}')">Delete</button>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <h2>Add a New Person</h2>
+    <form id="addForm">
+      <input type="text" id="nameInput" placeholder="Enter name" required />
+      <button type="submit">Add</button>
+    </form>
+
+    <script>
+      // Add new person
+      document
+        .getElementById("addForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("nameInput").value;
+
+          fetch("/add", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `name=${name}`,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                const ul = document.getElementById("people");
+                const li = document.createElement("li");
+                li.innerHTML = `${name} <button onclick="deletePerson('${name}')">Delete</button>`;
+                ul.appendChild(li);
+                document.getElementById("nameInput").value = ""; // Clear input
+              }
+            });
+        });
+
+      // Delete person
+      function deletePerson(name) {
+        fetch("/delete", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `name=${name}`,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              const ul = document.getElementById("people");
+              for (let i = 0; i < ul.children.length; i++) {
+                if (ul.children[i].textContent.includes(name)) {
+                  ul.removeChild(ul.children[i]);
+                  break;
+                }
+              }
+            }
+          });
+      }
+    </script>
+  </body>
+</html>

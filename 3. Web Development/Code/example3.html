@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Module 2</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="menu">
+            <a href="#">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="register.html">Register</a> |
+            <a href="#">Sign in</a>
+        </div>
+    </nav>
+
+    <div>
+        <h1>This is a heading in a div element</h1>
+        <p>This is some text in a div element.</p>
+    </div>
+
+    <section>
+        <h1>Section 1</h1>
+        <p>This is text related to section 1.</p>
+    </section>
+
+    <section>
+        <h1>Section 2</h1>
+        <p>This is some text related to section 2.</p>
+    </section>
+
+    <article>
+        <h1>Article 1</h1>
+        <p>This paragraph is related only to article one and is meaningful on its own, without the rest of the code.</p>
+    </article>
+
+    <article>
+        <h1>Article 2</h1>
+        <p>This paragraph is related only to article two and is meaningful on its own, without the rest of the code.</p>
+    </article>
+
+    <article>
+        <header>
+            <h1>G8 summit protests</h1>
+        </header>
+        <div>
+            <section id="public">
+                <h1>Public demonstrations</h1>
+                <p>...more...</p>
+            </section>
+            <section id="control">
+                <h1>Crowd control</h1>
+                <p>...more...</p>
+            </section>
+        </div>
+        <footer>
+            <p>Published today.</p>
+        </footer>
+    </article>
+
+    <p>This is a paragraph of text that casually mentions a concept and continues explaining the main point</p>
+
+    <aside>
+        <h4>Concept Definition</h4>
+        <p>This goes over the concept mentioned in the paragraph to provide readers with further explanation if needed.
+            However, it does not detract from the main content.</p>
+    </aside>
+
+    <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Thomas_J_Watson_Sr.jpg" width="500"
+            height="500" />
+        <figcaption>IBM Developer Skills Network Logo</figcaption>
+    </figure>
+
+    <audio>
+        <source src="soundtrack.mp3" type="audio/mpeg">
+        <source src="soundtrack.ogg" type="audio/ogg">
+        Your browser does not support the audio formats provided.
+    </audio>
+
+    <canvas>
+        Your browser does not support the canvas tag.
+    </canvas>
+
+    <script>
+        var canvas = document.getElementsByTagName("canvas")[0];
+        var context = canvas.getContext("2d");
+        context.fillRect(0, 0, 100, 100);
+    </script>
+
+    <embed type="text/html" src="example1.html">
+
+    <video>
+        <source src="common_html_elements.mp4" type="video/mp4">
+        <track src="english_subtitles.vtt" kind="subtitles" srclang="en" label="English">
+        <track src="spanish_subtitles.vtt" kind="subtitles" srclang="es" label="Spanish">
+    </video>
+
+</body>
+
+</html>
